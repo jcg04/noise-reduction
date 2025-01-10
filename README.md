@@ -1,7 +1,7 @@
 # noise-reduction
 Remove noise from images while preserving details.
 
-#Content
+# Content
 1.What are noise in images?
 2.Task Definitions.
 3.Solution Key Ideas.
