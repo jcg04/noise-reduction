@@ -57,3 +57,36 @@ Some tasks that we can use to avoid the noise on an image:
    	- Parameters: Wavelet type, thresholding mode (soft/hard), decomposition level.
 
 ## Solution Key Ideas:
+To effectively remove noise from images while preserving details, the solution should be based on a combination of robust algorithms, efficient implementation, and scalable design. Below are key ideas that can enhance the solution beyond the basic techniques:
+1. Adaptative Techniques:
+Noise in images can vary in type and intensity, so adaptive methods can dynamically adjust based on the image characteristics:
+	- Adaptive Gaussian Filtering: Automatically adjust kernel size and sigma based on local image properties, such as edge density.
+	- Adaptive Median Filtering: Use smaller kernels in smooth regions and larger kernels in noisy regions.
+	- Wavelet-Based Adaptive Thresholding: Set thresholds based on the noise level in each sub-band for better preservation of details.
+2. Hybrid Approaches:
+Combining techniques can yield better results:
+	- Combination of Gaussian and Median Filters: Use Gaussian smoothing for overall noise reduction and Median filtering for handling salt-and-pepper noise.
+	- Preprocessing with Denoising Autoencoders: Use deep learning models to preprocess images before applying traditional filters.
+	- Wavelet + Non-Local Means (NLM): Use wavelet transforms to denoise high-frequency components and NLM for smoothing textures.
+3. Edge-Preserving Filters:
+Preserving edges is crucial for high-quality image restoration:
+	- Bilateral Filter: A spatial filter that smoothens noise while preserving edges by considering both spatial and intensity distances.
+	- Non-Local Means (NLM): Reduces noise by averaging similar patches in the image, preserving textures and edges.
+	- Anisotropic Diffusion: Reduces noise iteratively while ensuring edge preservation by smoothing within regions rather than across edges.
+4. Deep-Learning Based Denoising:
+Modern approaches leverage the power of neural networks:
+	- Convolutional Neural Networks (CNNs):
+		- Train models like DnCNN (Denoising CNN) for different types of noise.
+		- Advantages: Ability to learn noise patterns and adapt across varying types of noise.
+	- UNet Architectures:
+		- Perform pixel-wise noise reduction, ideal for preserving high-frequency details.
+	- Denoising Autoencoders:
+		- Learn a mapping from noisy to clean images in an unsupervised manner.
+	- Transformers:
+		- Emerging models in vision tasks can be adapted for denoising by leveraging global context information.
+5. Parallel and Batch Processing:
+To make the solution scalable:
+	- Parallel Processing:
+		- Use multithreading or multiprocessing to handle large datasets or high-resolution images efficiently.
+	- Batch Denoising:
+		- Process multiple images concurrently using GPUs or distributed systems.
