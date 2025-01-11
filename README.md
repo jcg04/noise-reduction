@@ -55,3 +55,5 @@ Some tasks that we can use to avoid the noise on an image:
    	- Pourpose: Removes noise in the frequency domain while preserving image details.
    	- Challenges: Choosing appropriate wavelet type, decomposition level, and thresholding strategy.
    	- Parameters: Wavelet type, thresholding mode (soft/hard), decomposition level.
+
+## Solution Key Ideas:
