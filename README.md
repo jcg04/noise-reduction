@@ -37,3 +37,21 @@ Example: Grainy texture in low-light photographs.
 - Characteristics:
 	- Intensity-dependent noise.
 	- Prominent in scientific imaging.
+
+## Task Definitions
+The task involves implementing and evaluating methods to remove noise from images while preserving their details. The focus is on achieving high-quality outputs suitable for applications such as enhancing low-quality photos or processing medical images. Below are the detailed task definitions:
+- Objective: Develop a robust, modular, and concurrent system for denoising images using multiple techniques, while preserving fine details and edges.
+
+Some tasks that we can use to avoid the noise on an image:
+1. Gaussian Filtering.
+	- Pourpose: Smoothens images by averaging pixel values with their neighbors, reducing random noise.
+	- Challenges: Avoiding excessive blurring of edges
+ 	- Parameters: Kernel size, standard deviation (sigma).
+2. Median Filtering.
+   	- Pourpose: Effectively removes salt-and-pepper noise by replacing pixel values with the median of their neighbors.
+   	- Challenges: Maintaining computational efficiency for large kernel sizes.
+   	- Parameters: Kernel size.
+3. Wavelet Transforms.
+   	- Pourpose: Removes noise in the frequency domain while preserving image details.
+   	- Challenges: Choosing appropriate wavelet type, decomposition level, and thresholding strategy.
+   	- Parameters: Wavelet type, thresholding mode (soft/hard), decomposition level.
