@@ -3,7 +3,7 @@ Remove noise from images while preserving details.
 
 ## Content
 1. What are noise in images?
-2. Task Dfinitions.
+2. Task Definitions.
 3. Solution Key Ideas.
 4. Implementation.
 5. Result Examples.
@@ -47,16 +47,19 @@ Some tasks that we can use to avoid the noise on an image:
    
    A Gaussian Filter is a low pass filter used for reducing noise (high frequency components) and blurring regions of an image. The filter is implemented as an Odd sized Symmetric Kernel (DIP version of a 	 
    Matrix) which is passed through each pixel of the Region of Interest to get the desired effect. The kernel is not hard towards drastic color changed (edges) due to it the pixels towards the center of the 	 
-   kernel having more weightage towards the final value then the periphery. A Gaussian Filter could be considered as an approximation of the Gaussian Function (mathematics). In this article we will learn methods 
-   of utilizing Gaussian Filter to reduce noise in images using Python programming language.
+   kernel having more weightage towards the final value then the periphery. A Gaussian Filter could be considered as an approximation of the Gaussian Function (mathematics). In this article we will learn 
+   methods of utilizing Gaussian Filter to reduce noise in images using Python programming language.
 	- Pourpose: Smoothens images by averaging pixel values with their neighbors, reducing random noise.
 	- Challenges: Avoiding excessive blurring of edges
  	- Parameters: Kernel size, standard deviation (sigma).
 2. Median Filtering.
+	
+	For this we have to understand all the High-Pass filter and the Low-Pass filter. The High-Pass filter remove the high frequency domain, while the Low-Pass filter eliminates low-frequency regions while 
+        retaining or enhancing the frequency components.
    	- Pourpose: Effectively removes salt-and-pepper noise by replacing pixel values with the median of their neighbors.
    	- Challenges: Maintaining computational efficiency for large kernel sizes.
    	- Parameters: Kernel size.
-3. Wavelet Transforms.
+4. Wavelet Transforms.
    	- Pourpose: Removes noise in the frequency domain while preserving image details.
    	- Challenges: Choosing appropriate wavelet type, decomposition level, and thresholding strategy.
    	- Parameters: Wavelet type, thresholding mode (soft/hard), decomposition level.
@@ -95,3 +98,7 @@ To make the solution scalable:
 		- Use multithreading or multiprocessing to handle large datasets or high-resolution images efficiently.
 	- Batch Denoising:
 		- Process multiple images concurrently using GPUs or distributed systems.
+
+
+[1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
+[2] https://www.geeksforgeeks.org/apply-a-gauss-filter-to-an-image-with-python/?ref=gcse_outind
