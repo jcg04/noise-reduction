@@ -101,4 +101,5 @@ To make the solution scalable:
 
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
+
 [2] https://www.geeksforgeeks.org/apply-a-gauss-filter-to-an-image-with-python/?ref=gcse_outind
