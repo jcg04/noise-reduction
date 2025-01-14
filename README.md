@@ -169,6 +169,33 @@ for i in range(image.shape[0]):
 - region: Extracts a window of size kernel_size x kernel_size centred on the current pixel. This window includes the neighbouring pixels of the zoomed image.
 - Calculate median: Sorts all values in the extracted region. Finds the central value of the sorted set. This value replaces the original pixel value at the corresponding position.
 
-[1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
+And finally the wavelet transform:
+```
+ h, w = image.shape
+    half_h, half_w = h // 2, w // 2
+```
+- h, w: Height and width of the image.
+- half_h, half_w: Half of the height and width, to calculate the lower resolution sub-bands (approximation and detail).
 
+```
+ LL = (image[0:h:2, 0:w:2] + image[1:h:2, 0:w:2] + 
+          image[0:h:2, 1:w:2] + image[1:h:2, 1:w:2]) / 4
+
+    LH = (image[0:h:2, 0:w:2] + image[1:h:2, 0:w:2] - 
+          image[0:h:2, 1:w:2] - image[1:h:2, 1:w:2]) / 4
+
+    HL = (image[0:h:2, 0:w:2] - image[1:h:2, 0:w:2] + 
+          image[0:h:2, 1:w:2] - image[1:h:2, 1:w:2]) / 4
+
+    HH = (image[0:h:2, 0:w:2] - image[1:h:2, 0:w:2] - 
+          image[0:h:2, 1:w:2] + image[1:h:2, 1:w:2]) / 4
+```
+- LL (Low Frequency):This is the approximation sub-band. It averages 4 neighbouring pixels (pairs) to reduce resolution and capture overall image trends.
+- LH (Vertical High Frequency): Detects vertical changes in pixels.
+- HL (Horizontal High Frequency): Detects horizontal changes in pixels.
+- HH (High Frequency Diagonal): Captures details and diagonal variations in the image.
+
+
+
+[1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 [2] https://www.geeksforgeeks.org/apply-a-gauss-filter-to-an-image-with-python/?ref=gcse_outind
