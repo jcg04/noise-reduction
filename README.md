@@ -195,7 +195,27 @@ And finally the wavelet transform:
 - HL (Horizontal High Frequency): Detects horizontal changes in pixels.
 - HH (High Frequency Diagonal): Captures details and diagonal variations in the image.
 
+```
+ LH = np.where(np.abs(LH) > threshold, LH, 0)
+ HL = np.where(np.abs(HL) > threshold, HL, 0)
+ HH = np.where(np.abs(HH) > threshold, HH, 0)
+```
+For high frequency sub-bands (LH, HL, HH):
+If an absolute value is less than threshold, it is removed (set to 0).
+This reduces the high-frequency components that represent noise, while keeping the important details.
 
+```
+  result = np.zeros_like(image, dtype=np.float32)
+  for i in range(half_h):
+     for j in range(half_w):
+            result[2 * i, 2 * j] = LL[i, j] + LH[i, j] + HL[i, j] + HH[i, j]
+            result[2 * i + 1, 2 * j] = LL[i, j] + LH[i, j] - HL[i, j] - HH[i, j]
+            result[2 * i, 2 * j + 1] = LL[i, j] - LH[i, j] + HL[i, j] - HH[i, j]
+            result[2 * i + 1, 2 * j + 1] = LL[i, j] - LH[i, j] - HL[i, j] + HH[i, j]
+```
+The reconstructed pixel combines the low and high frequency sub-bands:
+It is calculated using the inverse Haar decomposition ratios.
+The loops traverse the dimensions of the (lower resolution) sub-bands and reconstruct into the full resolution image.
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 [2] https://www.geeksforgeeks.org/apply-a-gauss-filter-to-an-image-with-python/?ref=gcse_outind
