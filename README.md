@@ -7,8 +7,7 @@ Remove noise from images while preserving details.
 3. Solution Key Ideas.
 4. Implementation.
 5. Result Examples.
-6. Conclusion.
-7. Further Improvements.
+
 
 ## 1. What are noise in images?
 Noise in images refers to unwanted random variations in pixel intensity values, which obscure or distort the visual details of an image. It is often introduced during image acquisition, transmission, or processing. Noise can make it difficult to extract meaningful information from an image, particularly in applications like computer vision, medical imaging, or photography.
@@ -217,5 +216,9 @@ The reconstructed pixel combines the low and high frequency sub-bands:
 It is calculated using the inverse Haar decomposition ratios.
 The loops traverse the dimensions of the (lower resolution) sub-bands and reconstruct into the full resolution image.
 
+## Result Examples:
+The examples are going to be upload on the github.
+
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
+
 [2] https://www.geeksforgeeks.org/apply-a-gauss-filter-to-an-image-with-python/?ref=gcse_outind
