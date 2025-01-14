@@ -112,7 +112,7 @@ For example to install the last two:
 ```
 pip install Pillow matplotlib
 ```
-I have implemented both gaussian filter, gaussian filter convolve, median filter and wavelet. Let's start with the gaussian filter:
+I have implemented both gaussian filter, median filter and wavelet. Let's start with the gaussian filter:
 ```
  ax = np.linspace(-(kernel_size // 2), kernel_size // 2, kernel_size)
  gaussian = np.exp(-0.5 * (ax / sigma) ** 2)
@@ -141,6 +141,33 @@ I have implemented both gaussian filter, gaussian filter convolve, median filter
 - Multiplication and Addition: Performs the element-by-element product between the region window and the kernel kernel_2d.
 It then sums all product values and assigns the result to the corresponding pixel in filtered_image.
 
+Let's go now with the median filter:
+```
+if kernel_size % 2 == 0:
+        raise ValueError("Kernel size must be an odd number.")
+```
+Ensures that the kernel size is odd.
+This is necessary because the median is defined as the central value of an ordered set. With an even size, there would be no clear centre.
+
+```
+pad_size = kernel_size // 2
+padded_image = np.pad(image, pad_size, mode='edge')
+filtered_image = np.zeros_like(image, dtype=np.uint8)
+```
+- pad_size: Calculates the number of additional rows and columns needed to handle the edges of the image.
+- padded_image: Enlarges the image with edge-reflected pixels (mode=‘edge’). This avoids problems when processing pixels close to the edges.
+- filtered_image: Initialises an empty array to store the results after applying the filter. It has the same size as the original image.
+
+```
+for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            # Extraer la región alrededor del píxel actual
+            region = padded_image[i:i + kernel_size, j:j + kernel_size]
+            # Calcular la mediana de la región
+            filtered_image[i, j] = np.median(region)
+```
+- region: Extracts a window of size kernel_size x kernel_size centred on the current pixel. This window includes the neighbouring pixels of the zoomed image.
+- Calculate median: Sorts all values in the extracted region. Finds the central value of the sorted set. This value replaces the original pixel value at the corresponding position.
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 
