@@ -124,7 +124,22 @@ I have implemented both gaussian filter, gaussian filter convolve, median filter
 - kernel_1d: Normalises the Gaussian values by dividing each value by the total sum. This ensures that the kernel sum is 1.
 - kernel_2d: Generates a two-dimensional (2D) kernel by the outer product of kernel_1d with itself. This simulates the 2D form of the Gaussian function.
 
+```
+ padded_image = np.pad(image, kernel_size // 2, mode='edge')
+ filtered_image = np.zeros_like(image, dtype=np.float32)
+```
+- padded_image: Enlarges the original image by adding reflected edges. This ensures that pixels close to the edges of the original image can be processed correctly.
+- filtered_image: Initialises an empty array with the same dimensions as the original image. This is where the filtered values will be stored.
 
+```
+ for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            region = padded_image[i:i + kernel_size, j:j + kernel_size]
+            filtered_image[i, j] = np.sum(region * kernel_2d)
+```
+- region: Extracts a submatrix (window) from the zoomed image. The window has the same size as the kernel (kernel_size x kernel_size) and is centred on the current pixel.
+- Multiplication and Addition: Performs the element-by-element product between the region window and the kernel kernel_2d.
+It then sums all product values and assigns the result to the corresponding pixel in filtered_image.
 
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
