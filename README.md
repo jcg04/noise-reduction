@@ -112,6 +112,8 @@ For example to install the last two:
 ```
 pip install Pillow matplotlib
 ```
+I have implemented both gaussian filter, gaussian filter convolve, median filter and wavelet.
+
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 
