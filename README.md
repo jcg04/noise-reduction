@@ -60,6 +60,13 @@ Some tasks that we can use to avoid the noise on an image:
    	- Challenges: Maintaining computational efficiency for large kernel sizes.
    	- Parameters: Kernel size.
 4. Wavelet Transforms.
+   
+   	There are several types of Wavelet transforms, each suitable for different applications. The Continuous Wavelet Transform (CWT) provides a continuous 	 
+        representation of the signal, allowing a detailed analysis of its structure. In contrast, the Discrete Wavelet Transform (DWT) offers a more 
+        computationally efficient approach by discretising both the time and frequency domains. The DWT is widely used in applications such as image compression 
+        and noise reduction, as it allows the efficient representation of data while preserving essential features. In addition, the Stationary Wavelet Transform 
+        (SWT) maintains the length of the original signal, which makes it useful for applications where phase information is critical.
+   
    	- Pourpose: Removes noise in the frequency domain while preserving image details.
    	- Challenges: Choosing appropriate wavelet type, decomposition level, and thresholding strategy.
    	- Parameters: Wavelet type, thresholding mode (soft/hard), decomposition level.
