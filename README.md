@@ -106,6 +106,12 @@ To make the solution scalable:
 	- Batch Denoising:
 		- Process multiple images concurrently using GPUs or distributed systems.
 
+## Implementation
+We are going to implement ways to solve noise problems or to reduce them. We will implement it in python so we will need to download the numpy, matplotlib and pillow libraries.
+For example to install the last two:
+```
+pip install Pillow matplotlib
+```
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 
