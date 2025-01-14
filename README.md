@@ -112,17 +112,20 @@ For example to install the last two:
 ```
 pip install Pillow matplotlib
 ```
-I have implemented both gaussian filter, gaussian filter convolve, median filter and wavelet.
+I have implemented both gaussian filter, gaussian filter convolve, median filter and wavelet. Let's start with the gaussian filter:
 ```
  ax = np.linspace(-(kernel_size // 2), kernel_size // 2, kernel_size)
  gaussian = np.exp(-0.5 * (ax / sigma) ** 2)
  kernel_1d = gaussian / gaussian.sum()
  kernel_2d = np.outer(kernel_1d, kernel_1d)
 ```
-ax: Creates a symmetric range of values centred on 0 (e.g. for kernel_size=5, [-2, -1, 0, 1, 2] is generated).
-gaussian: Calculate the Gaussian function in 1D for the range ax.
-kernel_1d: Normalises the Gaussian values by dividing each value by the total sum. This ensures that the kernel sum is 1.
-kernel_2d: Generates a two-dimensional (2D) kernel by the outer product of kernel_1d with itself. This simulates the 2D form of the Gaussian function.
+- ax: Creates a symmetric range of values centred on 0 (e.g. for kernel_size=5, [-2, -1, 0, 1, 2] is generated).
+- gaussian: Calculate the Gaussian function in 1D for the range ax.
+- kernel_1d: Normalises the Gaussian values by dividing each value by the total sum. This ensures that the kernel sum is 1.
+- kernel_2d: Generates a two-dimensional (2D) kernel by the outer product of kernel_1d with itself. This simulates the 2D form of the Gaussian function.
+
+
+
 
 [1] https://www.geeksforgeeks.org/spatial-filters-averaging-filter-and-median-filter-in-image-processing/?ref=gcse_outind
 
